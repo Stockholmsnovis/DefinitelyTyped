@@ -3,7 +3,10 @@
 // Definitions by: Denis Carriere <https://github.com/DenisCarriere>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare namespace proj4 {
+declare function proj4(fromProjection: string, toProjection?: string, coordinates?: proj4.TemplateCoordinates): proj4.Static;
+declare function proj4(fromProjection: string, coordinates: proj4.TemplateCoordinates): number[];
+
+declare module proj4 {
     type TemplateCoordinates = number[] | InterfaceCoordinates;
 
     interface InterfaceCoordinates {
@@ -62,6 +65,6 @@ declare namespace proj4 {
     const version: string;
 }
 
-declare function proj4(fromProjection: string, toProjection?: string, coordinates?: proj4.TemplateCoordinates): proj4.Static;
-declare function proj4(fromProjection: string, coordinates: proj4.TemplateCoordinates): number[];
-export = proj4;
+declare module "proj4" {
+    export = proj4;
+}
